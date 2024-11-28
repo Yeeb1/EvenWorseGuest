@@ -37,10 +37,6 @@ To further analyze the data collected by the `bad_guest` script, a Python script
   - Provides mappings of users to groups and groups to users.
   - Highlights users not in any group.
 
-- **Output Formatting**:
-  - The script outputs the statistics in a readable and organized format.
-  - Displays detailed group memberships for the top users.
-
 - **JSON Relationship File**:
   - Saves all user and group relationships into a JSON file (`user_group_relationships.json`) for easier parsing and further analysis.
 
