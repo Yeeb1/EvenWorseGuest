@@ -23,6 +23,127 @@ This is a fork of **nyxgeek's [Bad Guest](https://github.com/nyxgeek/bad_guest)*
    - The script generates a JSON file (`bh.json`) containing the collected data in the specified format.
    - Additional text files are created, including detailed lists of users, groups, and group memberships.
 
+## Parsing the JSON Output
+
+To further analyze the data collected by the `bad_guest` script, a Python script `analyze_bad_guest.py` is provided. This script parses the JSON output and generates statistics to help map the infrastructure based on group memberships.
+
+### Features of the Parse Script
+
+- **Statistics Generation**:
+  - Identifies which users are in the most groups.
+  - Finds which groups have the most members.
+  - Calculates total numbers and averages.
+  - Lists top users and groups based on memberships.
+  - Provides mappings of users to groups and groups to users.
+  - Highlights users not in any group.
+
+- **Output Formatting**:
+  - The script outputs the statistics in a readable and organized format.
+  - Displays detailed group memberships for the top users.
+
+- **JSON Relationship File**:
+  - Saves all user and group relationships into a JSON file (`user_group_relationships.json`) for easier parsing and further analysis.
+
+### Script Output
+
+The script will output various statistics and save the user and group relationships into `user_group_relationships.json`. Sample output:
+
+```bash
+============================================================
+User(s) in the most groups (10 groups):
+============================================================
+- John Doe (jdoe@example.com)
+
+============================================================
+Group(s) with the most members (50 members):
+============================================================
+- All Employees
+
+============================================================
+Total number of users: 200
+Total number of groups: 50
+============================================================
+Average number of groups per user: 2.75
+Average number of members per group: 11.00
+
+============================================================
+Top 5 users by number of group memberships:
+============================================================
+- John Doe (jdoe@example.com): 10 groups
+- Jane Smith (jsmith@example.com): 8 groups
+- Bob Johnson (bjohnson@example.com): 7 groups
+- Alice Brown (abrown@example.com): 6 groups
+- Charlie Davis (cdavis@example.com): 5 groups
+
+============================================================
+Top 5 groups by number of members:
+============================================================
+- All Employees: 50 members
+- IT Department: 30 members
+- HR Department: 25 members
+- Management: 15 members
+- Marketing Team: 10 members
+
+============================================================
+Group memberships for the top 5 users:
+============================================================
+
+John Doe (jdoe@example.com):
+  - All Employees
+  - IT Department
+  - Project A Team
+  - Security Group
+  - Admins
+  - Developers
+  - Testers
+  - Managers
+  - Remote Workers
+  - Beta Testers
+
+... (and so on for the other top users)
+
+============================================================
+User and group relationships have been saved to 'user_group_relationships.json'.
+============================================================
+```
+
+### Structure of `user_group_relationships.json`
+
+The JSON file contains mappings of users and groups for further analysis:
+
+```json
+{
+    "users": {
+        "user-guid-1": {
+            "id": "user-guid-1",
+            "displayName": "John Doe",
+            "userPrincipalName": "jdoe@example.com",
+            "mail": "jdoe@example.com",
+            "userType": "Member"
+        },
+        // ... other users
+    },
+    "groups": {
+        "group-guid-1": {
+            "id": "group-guid-1",
+            "displayName": "All Employees",
+            "description": "All company employees",
+            "mail": "allemployees@example.com"
+        },
+        // ... other groups
+    },
+    "userGroups": {
+        "user-guid-1": ["group-guid-1", "group-guid-2", ...],
+        // ... other user to group mappings
+    },
+    "groupMembers": {
+        "group-guid-1": ["user-guid-1", "user-guid-2", ...],
+        // ... other group to member mappings
+    }
+}
+```
+
+
 ## Acknowledgements
 
 - **Original Author**: [nyxgeek](https://github.com/nyxgeek)
