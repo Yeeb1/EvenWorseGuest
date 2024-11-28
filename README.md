@@ -1,3 +1,35 @@
+# Bad Guest JSON
+
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/37e07a40-fd43-4ca2-bcb3-3fdb553f1dc2" width="400">
+
+This is a fork of **nyxgeek's [Bad Guest](https://github.com/nyxgeek/bad_guest)** tool, originally presented in TrustedSec's blog post: [Unwelcome Guest: Abusing Azure Guest Access to Dump Users, Groups, and More](https://trustedsec.com/blog/unwelcome-guest-abusing-azure-guest-access-to-dump-users-groups-and-more/).
+
+## Overview
+
+- I relly do like the attack vector of the script so I first attempted to convert the tool's output into a JSON format that can be parsed by Azure/BloodHound ingestors, since that could be quite valuable to map the targets group structure and idenitfy valuable assets/users. However due to the limitations in data retrieval as a guest user, it is not possible to create a JSON file that can be directly ingested into the BloodHound database. However, the generated JSON is structured in a way that makes it parsable for inclusion in certain attack pipelines or whatever.
+- Outputs the collected data in a structured JSON format, with consistent entries for `AZUser`, `AZGroup`, `AZGroupMember`, and `AZGroupOwner`. Even when certain data fields are not available due to access limitations, the JSON structure includes these fields with empty values to maintain consistency, but that still doesnt allow us to import the json file into BloodHound :-)
+- Added hash tables to keep track of already processed groups and users. This ensures that each group and user is processed only once, reducing redundant operations and improving the script's execution speed.
+
+## Limitations
+
+- As a guest user, the script can only retrieve limited data from the Azure AD tenant. This means that some fields in the JSON output may be empty or null.
+- The JSON output cannot be directly ingested into the BloodHound database due to the aforementioned data limitations. 
+
+## Usage
+
+   - Install the required PowerShell modules: `Az` and `AzureAD`.
+   - Ensure you have appropriate permissions to access the target Azure AD tenant as a guest user.
+   - The script generates a JSON file (`bh.json`) containing the collected data in the specified format.
+   - Additional text files are created, including detailed lists of users, groups, and group memberships.
+
+## Acknowledgements
+
+- **Original Author**: [nyxgeek](https://github.com/nyxgeek)
+- **Original Tool**: [Bad Guest](https://github.com/nyxgeek/bad_guest)
+- **TrustedSec Blog Post**: [Unwelcome Guest: Abusing Azure Guest Access to Dump Users, Groups, and More](https://trustedsec.com/blog/unwelcome-guest-abusing-azure-guest-access-to-dump-users-groups-and-more/)
+
+## Original README:
 bad guest
 
 By default, Microsoft tries to restrict the ability for Guest users to retrieve user and group informaiton.
