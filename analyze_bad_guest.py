@@ -7,9 +7,12 @@ def main():
     parser.add_argument('json_file', metavar='JSON_FILE', type=str, nargs='?',
                         default='bh.json',
                         help='The JSON file to parse (default: bh.json)')
+    parser.add_argument('-n', '--top-n', type=int, default=5,
+                        help='Number of top users and groups to display (default: 5)')
     args = parser.parse_args()
 
     json_file = args.json_file
+    top_n = args.top_n
 
     try:
         with open(json_file, 'r', encoding='utf-8') as f:
@@ -101,8 +104,7 @@ def main():
     average_members_per_group = (sum(group_member_counts.values()) / total_groups) if total_groups > 0 else 0
     print(f"Average number of members per group: {average_members_per_group:.2f}")
 
-    # 6. List top 5 users in terms of group memberships
-    top_n = 5
+    # 6. List top N users in terms of group memberships
     sorted_users_by_groups = sorted(user_group_counts.items(), key=lambda x: x[1], reverse=True)
     print(f"\n{'='*60}")
     print(f"Top {top_n} users by number of group memberships:")
@@ -111,7 +113,7 @@ def main():
         user_info = users.get(user_id, {})
         print(f"- {user_info.get('displayName')} ({user_info.get('userPrincipalName')}): {count} groups")
 
-    # 7. List top 5 groups by number of members
+    # 7. List top N groups by number of members
     sorted_groups_by_members = sorted(group_member_counts.items(), key=lambda x: x[1], reverse=True)
     print(f"\n{'='*60}")
     print(f"Top {top_n} groups by number of members:")
@@ -120,7 +122,7 @@ def main():
         group_info = groups.get(group_id, {})
         print(f"- {group_info.get('displayName')}: {count} members")
 
-    # 8. Print group memberships for the top 5 users
+    # 8. Print group memberships for the top N users
     print(f"\n{'='*60}")
     print(f"Group memberships for the top {top_n} users:")
     print(f"{'='*60}")
