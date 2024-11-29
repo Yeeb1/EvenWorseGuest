@@ -1,4 +1,4 @@
-# Bad Guest JSON
+# Even Worse Guest
 
 <p align="center">
     <img src="https://github.com/user-attachments/assets/37e07a40-fd43-4ca2-bcb3-3fdb553f1dc2" width="400">
