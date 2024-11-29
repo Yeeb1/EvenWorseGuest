@@ -48,12 +48,12 @@ The script will output various statistics and save the user and group relationsh
 ============================================================
 User(s) in the most groups (10 groups):
 ============================================================
-- John Doe (jdoe@example.com)
+- Ken Takakura (ktakakura@example.com)
 
 ============================================================
 Group(s) with the most members (50 members):
 ============================================================
-- All Employees
+- Occult Research Club
 
 ============================================================
 Total number of users: 200
@@ -65,36 +65,46 @@ Average number of members per group: 11.00
 ============================================================
 Top 5 users by number of group memberships:
 ============================================================
-- John Doe (jdoe@example.com): 10 groups
-- Jane Smith (jsmith@example.com): 8 groups
-- Bob Johnson (bjohnson@example.com): 7 groups
-- Alice Brown (abrown@example.com): 6 groups
-- Charlie Davis (cdavis@example.com): 5 groups
+- Ken Takakura (ktakakura@example.com): 10 groups
+- Momo Ayase (mayase@example.com): 8 groups
+- Okarun (okarun@example.com): 7 groups
+- Aira Shiratori (ashiratori@example.com): 6 groups
+- Jiji (jiji@example.com): 5 groups
 
 ============================================================
 Top 5 groups by number of members:
 ============================================================
-- All Employees: 50 members
-- IT Department: 30 members
-- HR Department: 25 members
-- Management: 15 members
-- Marketing Team: 10 members
+- Occult Research Club: 50 members
+- Alien Investigators: 30 members
+- Psychic Users: 25 members
+- Turbo Granny's Fans: 15 members
+- Kaiju Enthusiasts: 10 members
 
 ============================================================
 Group memberships for the top 5 users:
 ============================================================
 
-John Doe (jdoe@example.com):
-  - All Employees
-  - IT Department
-  - Project A Team
-  - Security Group
-  - Admins
-  - Developers
-  - Testers
-  - Managers
-  - Remote Workers
-  - Beta Testers
+Ken Takakura (ktakakura@example.com):
+  - Occult Research Club
+  - Alien Investigators
+  - Psychic Users
+  - Turbo Granny's Fans
+  - Secret Agents
+  - Time Travelers
+  - Dimension Hoppers
+  - Urban Legend Hunters
+  - Mystery Solvers
+  - School Council
+
+Momo Ayase (mayase@example.com):
+  - Occult Research Club
+  - Alien Investigators
+  - Psychic Users
+  - Turbo Granny's Fans
+  - Kaiju Enthusiasts
+  - Manga Artists
+  - Music Lovers
+  - Fashion Designers
 
 ... (and so on for the other top users)
 
@@ -112,9 +122,9 @@ The JSON file contains mappings of users and groups for further analysis:
     "users": {
         "user-guid-1": {
             "id": "user-guid-1",
-            "displayName": "John Doe",
-            "userPrincipalName": "jdoe@example.com",
-            "mail": "jdoe@example.com",
+            "displayName": "Ken Takakura",
+            "userPrincipalName": "ktakakura@example.com",
+            "mail": "ktakakura@example.com",
             "userType": "Member"
         },
         // ... other users
@@ -122,9 +132,9 @@ The JSON file contains mappings of users and groups for further analysis:
     "groups": {
         "group-guid-1": {
             "id": "group-guid-1",
-            "displayName": "All Employees",
-            "description": "All company employees",
-            "mail": "allemployees@example.com"
+            "displayName": "Occult Research Club",
+            "description": "Investigating the supernatural",
+            "mail": "occultclub@example.com"
         },
         // ... other groups
     },
