@@ -1,7 +1,7 @@
 # Even Worse Guest
 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/37e07a40-fd43-4ca2-bcb3-3fdb553f1dc2" width="400">
+    <img src="https://github.com/user-attachments/assets/46e16070-e439-4012-a28f-2581018a5731" width="400">
 
 This is a fork of **nyxgeek's [Bad Guest](https://github.com/nyxgeek/bad_guest)** tool, originally presented in TrustedSec's blog post: [Unwelcome Guest: Abusing Azure Guest Access to Dump Users, Groups, and More](https://trustedsec.com/blog/unwelcome-guest-abusing-azure-guest-access-to-dump-users-groups-and-more/).
 
