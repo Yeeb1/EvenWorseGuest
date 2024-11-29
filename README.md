@@ -8,7 +8,6 @@ This is a fork of **nyxgeek's [Bad Guest](https://github.com/nyxgeek/bad_guest)*
 ## Overview
 
 - I really do like the attack vector of the script so I first attempted to convert the tool's output into a JSON format that can be parsed by Azure/BloodHound ingestors, since that could be quite valuable to map the targets group structure and idenitfy valuable assets/users. However due to the limitations in data retrieval as a guest user, it is not possible to create a JSON file that can be directly ingested into the BloodHound database. However, the generated JSON is structured in a way that makes it parsable for inclusion in certain attack pipelines.
-- Outputs the collected data in a structured JSON format, with consistent entries for `AZUser`, `AZGroup`, `AZGroupMember`, and `AZGroupOwner`. Even when certain data fields are not available due to access limitations, the JSON structure includes these fields with empty values to maintain consistency, but that still doesnt allow us to import the json file into BloodHound :-)
 - Added hash tables to keep track of already processed groups and users. This ensures that each group and user is processed only once, reducing redundant operations and improving the script's execution speed.
 
 ## Limitations
